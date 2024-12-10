@@ -7,17 +7,9 @@ class Fraction
 		int denominator_;
 
 	public:
-		double fract_represent()
-		{
-//			double tmp1 = static_cast<double>(numerator_);
-//			double tmp2 = static_cast<double>(denominator_);
-//			return tmp1 / tmp2;
-			return static_cast<double>(numerator_) / static_cast<double>(denominator_); // привожу к типу double для более точного результата. Иначе получается, что f1(6, 12) = f2(6, 11).
-		}
-
 		bool operator==(Fraction &num)
 		{
-			return fract_represent() == num.fract_represent();
+			return numerator_ * num.denominator_ == denominator_ * num.numerator_;
 		}
 
 		bool operator != (Fraction &num)
@@ -27,7 +19,7 @@ class Fraction
 
 		bool operator > (Fraction &num)
 		{
-			return fract_represent() > num.fract_represent();
+			return numerator_ * num.denominator_ > denominator_ * num.numerator_;
 		}
 
 		bool operator < (Fraction &num)
